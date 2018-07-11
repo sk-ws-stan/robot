@@ -12,7 +12,7 @@ namespace ToyRobot
         Command(){};
         virtual ~Command(){};
 
-        virtual void Execute( Position& position, const Grid& grid ) = 0;
+        virtual const Position Execute( const Position& position, const Grid& grid ) = 0;
     };
 }
 #endif

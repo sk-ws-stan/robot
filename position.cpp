@@ -5,7 +5,7 @@ namespace ToyRobot
 
 Position::Position() :
     m_coordinates(),
-    m_direction()
+    m_direction( )
 {}
 
 Position::Position( const Coordinates& coordinates, const Direction& direction ) :
@@ -23,6 +23,18 @@ const Coordinates Position::GetCoordinates() const
 const Direction Position::GetDirection() const
 {
     return m_direction;
+}
+
+void Position::SetCoordinates( const Coordinates& coordinates )
+{
+    //check whether valid or just set?
+    m_coordinates = coordinates;
+}
+
+void Position::SetDirection( const Direction& direction )
+{
+    //check whether valid or just set?
+    m_direction = direction;
 }
 
 }

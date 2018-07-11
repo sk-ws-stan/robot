@@ -9,11 +9,14 @@ ReportCommand::ReportCommand() :
     Command()
 {}
 
-void ReportCommand::Execute( Position& position, const Grid& grid )
+const Position ReportCommand::Execute( const Position& position, const Grid& grid )
 {
     //what if position not set -> cout error
+    Position returnValue = position;
 
-    std::cout << position.GetCoordinates().GetX() << "," << position.GetCoordinates().GetY() << "," << position.GetDirection().GetDirectionAsString() << std::endl;
+    std::cout << position.GetCoordinates().GetX() << "," << position.GetCoordinates().GetY() << "," << position.GetDirection().ToString() << std::endl;
+
+    return returnValue;
 }
 
 }

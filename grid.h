@@ -7,10 +7,12 @@ namespace ToyRobot
     {
     public:
         Grid( int x, int y );
-        ~Grid();
+        ~Grid(){};
 
         const int GetX() const;
         const int GetY() const;
+
+        const bool OnGrid( const int& x, const int& y ) const;
 
     private:
         int m_x;

@@ -1,5 +1,5 @@
-#ifndef TOYROBOT_REPORT_COMMAND_H
-#define TOYROBOT_REPORT_COMMAND_H
+#ifndef TOYROBOT_MOVE_COMMAND_H
+#define TOYROBOT_MOVE_COMMAND_H
 
 #include "command.h"
 #include "grid.h"
@@ -7,11 +7,11 @@
 
 namespace ToyRobot
 {
-    class ReportCommand : public Command
+    class MoveCommand : public Command
     {
     public:
-        ReportCommand();
-        virtual ~ReportCommand(){};
+        MoveCommand();
+        virtual ~MoveCommand(){};
 
         virtual const Position Execute( const Position& position, const Grid& grid );
     };

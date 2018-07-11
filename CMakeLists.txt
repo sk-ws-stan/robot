@@ -6,18 +6,20 @@ add_executable( toy_robot
     direction.h
     grid.cpp
     grid.h
-#    move_command.cpp
-#    move_command.h
+    main.cpp
+    move_command.cpp
+    move_command.h
 #    parser.cpp
 #    parser.h
-#    place_command.cpp
-#    place_command.h
+    place_command.cpp
+    place_command.h
     position.cpp
     position.h
     report_command.cpp
     report_command.h
     robot.cpp
     robot.h
-#    rotate_command.cpp
-#    rotate_command.h
+    rotation.h
+    rotate_command.cpp
+    rotate_command.h
 )

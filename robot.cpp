@@ -9,7 +9,7 @@ Robot::Robot( const Grid& grid ) :
     m_position()
 {}
 
-void Robot::ExecuteCommand( Command& command )
+void Robot::DoExecute( Command& command )
 {
    command.Execute( m_position, m_grid );
 }

@@ -14,7 +14,7 @@ namespace ToyRobot
         Robot( const Grid& grid );
         ~Robot(){};
 
-        void ExecuteCommand( Command& command );
+        void DoExecute( Command& command );
 
     private:
         Grid m_grid;
