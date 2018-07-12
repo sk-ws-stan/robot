@@ -22,10 +22,10 @@ int main (int argc, char *argv[])
         //robot
         Robot robot = Robot( grid );
 
-
         if( 2 <= argc )
         {
             //load robot commands from file
+            //std::ifstream commandFile( argv[ 1 ] );
         }
         else
         {

@@ -4,7 +4,7 @@ option( BUILD_UNIT_TEST "unit tests?" OFF )
 
 add_subdirectory( src )
 
-if( ${BUILD_UNIT_TESTS} )
+if( ${BUILD_UNIT_TEST} )
     add_subdirectory( test )
 endif()
 

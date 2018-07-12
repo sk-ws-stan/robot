@@ -88,7 +88,7 @@ const std::string Direction::ToString() const
     return ToString( m_direction );
 }
 
-const std::string Direction::ToString( const DirectionEnum& direction ) const
+const std::string Direction::ToString( const DirectionEnum& direction )
 {
     //contemplated doing arithmetics on the direction enum with the roation, as in direction is ordered cw or ccw [0,3] and rotation {-1,1}:    // newDirection = ( direction + rotation ) % 3
     // decided against it, as it is a) a tight coupling and b) arithmetics with enums is bad style
