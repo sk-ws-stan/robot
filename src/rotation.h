@@ -19,7 +19,7 @@ namespace ToyRobot
             return ToString( m_rotation );
         };
 
-        const std::string ToString( const RotationEnum& rotation ) const
+        static const std::string ToString( const RotationEnum& rotation )
         {
             std::string returnValue;
 

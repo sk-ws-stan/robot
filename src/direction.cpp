@@ -83,6 +83,12 @@ const Direction::DirectionEnum Direction::GetDirection() const
     return m_direction;
 }
 
+void Direction::SetDirection( const DirectionEnum& direction )
+{
+    //check if valid?
+    m_direction = direction;
+}
+
 const std::string Direction::ToString() const
 {
     return ToString( m_direction );
