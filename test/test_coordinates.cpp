@@ -5,6 +5,8 @@
 
 #include "../src/coordinates.h"
 
+using namespace ToyRobot;
+
 namespace UnitTestToyRobot
 {
 

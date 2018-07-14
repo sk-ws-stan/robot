@@ -5,6 +5,8 @@
 
 #include "../src/grid.h"
 
+using namespace ToyRobot;
+
 namespace UnitTestToyRobot
 {
 
