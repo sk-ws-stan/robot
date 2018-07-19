@@ -19,6 +19,7 @@ namespace ToyRobot
         };
 
         Direction();
+        Direction( const std::string& directionString );
         Direction( const DirectionEnum& direction );
         ~Direction(){};
 
@@ -27,7 +28,7 @@ namespace ToyRobot
         const DirectionEnum GetDirection() const;
         void SetDirection( const DirectionEnum& direction );
         const std::string ToString() const;
-        static const std::string ToString( const DirectionEnum& directionn );
+        static const std::string ToString( const DirectionEnum& direction );
 
     private:
         DirectionEnum m_direction;

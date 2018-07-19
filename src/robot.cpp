@@ -9,9 +9,9 @@ Robot::Robot( const Grid& grid ) :
     m_position()
 {}
 
-void Robot::DoExecute( Command& command )
+void Robot::DoExecute( std::shared_ptr< Command >& command )
 {
-   m_position = command.Execute( m_position, m_grid );
+   m_position = command->Execute( m_position, m_grid );
 }
 
 }

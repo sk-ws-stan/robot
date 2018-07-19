@@ -4,6 +4,8 @@
 #include "grid.h"
 #include "position.h"
 
+#include <memory>
+
 namespace ToyRobot
 {
     class Command;
@@ -14,7 +16,7 @@ namespace ToyRobot
         Robot( const Grid& grid );
         ~Robot(){};
 
-        void DoExecute( Command& command );
+        void DoExecute( std::shared_ptr< Command >& command );
 
     private:
         Grid m_grid;

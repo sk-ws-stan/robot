@@ -10,10 +10,12 @@ namespace ToyRobot
     class PlaceCommand : public Command
     {
     public:
-        PlaceCommand();
+        PlaceCommand( const Position& position );
         virtual ~PlaceCommand(){};
 
         virtual const Position Execute( const Position& position, const Grid& grid );
+    private:
+        Position m_position;
     };
 }
 #endif

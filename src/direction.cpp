@@ -7,6 +7,30 @@ Direction::Direction() :
     m_direction( INVALID )
 {}
 
+Direction::Direction( const std::string& directionString )
+{
+    if( directionString == ToString( NORTH ) )
+    {
+        m_direction = NORTH;
+    }
+    else if( directionString == ToString( SOUTH ) )
+    {
+        m_direction = SOUTH;
+    }
+    else if( directionString == ToString( EAST ) )
+    {
+        m_direction = EAST;
+    }
+    else if( directionString == ToString( WEST ) )
+    {
+        m_direction = WEST;
+    }
+    else
+    {
+        m_direction = INVALID;
+    }
+}
+
 Direction::Direction( const DirectionEnum& direction ) :
     m_direction( direction )
 {}

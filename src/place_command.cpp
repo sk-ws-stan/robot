@@ -3,18 +3,19 @@
 namespace ToyRobot
 {
 
-PlaceCommand::PlaceCommand() :
-    Command()
+PlaceCommand::PlaceCommand( const Position& position ) :
+    Command(),
+    m_position( position )
 {}
 
-const Position PlaceCommand::Execute( const Position& position, const Grid& grid )
+const Position PlaceCommand::Execute( const Position& /*position*/, const Grid& grid )
 {
     Position returnValue;
 
-    if( ( grid.OnGrid( position.GetCoordinates().GetX(), position.GetCoordinates().GetY() ) ) &&
-        ( position.GetDirection().GetDirection() != Direction::INVALID ) )
+    if( ( grid.OnGrid( m_position.GetCoordinates().GetX(), m_position.GetCoordinates().GetY() ) ) &&
+        ( m_position.GetDirection().GetDirection() != Direction::INVALID ) )
     {
-        returnValue = position;
+        returnValue = m_position;
     }
     return returnValue;
 }

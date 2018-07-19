@@ -40,6 +40,20 @@ BOOST_AUTO_TEST_CASE( initialisation2 )
     BOOST_CHECK_EQUAL( dir.GetDirection(), value );
 }
 
+BOOST_AUTO_TEST_CASE( initialisation3 )
+{
+    Direction dir( std::string( "NORTH" ) );
+    Direction::DirectionEnum expectedValue = Direction::NORTH;
+    BOOST_CHECK_EQUAL( dir.GetDirection(), expectedValue );
+}
+
+BOOST_AUTO_TEST_CASE( initialisation4 )
+{
+    Direction dir( std::string( "NAUGHT" ) );
+    Direction::DirectionEnum expectedValue = Direction::INVALID;
+    BOOST_CHECK_EQUAL( dir.GetDirection(), expectedValue );
+}
+
 BOOST_AUTO_TEST_CASE( set_value )
 {
     Direction::DirectionEnum value = Direction::NORTH;
@@ -49,8 +63,11 @@ BOOST_AUTO_TEST_CASE( set_value )
 
 BOOST_AUTO_TEST_CASE( to_string_member )
 {
+    std::string expectedValue( "INVALID" );
+    BOOST_CHECK_EQUAL( direction->ToString(), expectedValue );
+
     direction->SetDirection( Direction::NORTH );
-    std::string expectedValue( "NORTH" );
+    expectedValue = "NORTH";
     BOOST_CHECK_EQUAL( direction->ToString(), expectedValue );
 
     direction->SetDirection( Direction::SOUTH );
@@ -79,13 +96,40 @@ BOOST_AUTO_TEST_CASE( to_string_arg )
 
     expectedValue = "EAST";
     BOOST_CHECK_EQUAL( Direction::ToString( Direction::EAST ), expectedValue );
+
+    expectedValue = "INVALID";
+    BOOST_CHECK_EQUAL( Direction::ToString( Direction::INVALID ), expectedValue );
 }
 
-BOOST_AUTO_TEST_CASE( turn_left_valid )
+BOOST_AUTO_TEST_CASE( turn_left_valid_north )
+{
+    direction->SetDirection( Direction::NORTH );
+    direction->TurnLeft();
+    Direction::DirectionEnum expectedValue = Direction::WEST;
+    BOOST_CHECK_EQUAL( direction->GetDirection(), expectedValue );
+}
+
+BOOST_AUTO_TEST_CASE( turn_left_valid_south )
 {
     direction->SetDirection( Direction::SOUTH );
     direction->TurnLeft();
     Direction::DirectionEnum expectedValue = Direction::EAST;
+    BOOST_CHECK_EQUAL( direction->GetDirection(), expectedValue );
+}
+
+BOOST_AUTO_TEST_CASE( turn_left_valid_east )
+{
+    direction->SetDirection( Direction::EAST );
+    direction->TurnLeft();
+    Direction::DirectionEnum expectedValue = Direction::NORTH;
+    BOOST_CHECK_EQUAL( direction->GetDirection(), expectedValue );
+}
+
+BOOST_AUTO_TEST_CASE( turn_left_valid_west )
+{
+    direction->SetDirection( Direction::WEST );
+    direction->TurnLeft();
+    Direction::DirectionEnum expectedValue = Direction::SOUTH;
     BOOST_CHECK_EQUAL( direction->GetDirection(), expectedValue );
 }
 
@@ -97,11 +141,35 @@ BOOST_AUTO_TEST_CASE( turn_left_invalid )
     BOOST_CHECK_EQUAL( direction->GetDirection(), expectedValue );
 }
 
-BOOST_AUTO_TEST_CASE( turn_right_valid )
+BOOST_AUTO_TEST_CASE( turn_right_valid_north )
+{
+    direction->SetDirection( Direction::NORTH );
+    direction->TurnRight();
+    Direction::DirectionEnum expectedValue = Direction::EAST;
+    BOOST_CHECK_EQUAL( direction->GetDirection(), expectedValue );
+}
+
+BOOST_AUTO_TEST_CASE( turn_right_valid_south )
+{
+    direction->SetDirection( Direction::SOUTH );
+    direction->TurnRight();
+    Direction::DirectionEnum expectedValue = Direction::WEST;
+    BOOST_CHECK_EQUAL( direction->GetDirection(), expectedValue );
+}
+
+BOOST_AUTO_TEST_CASE( turn_right_valid_east )
 {
     direction->SetDirection( Direction::EAST );
     direction->TurnRight();
     Direction::DirectionEnum expectedValue = Direction::SOUTH;
+    BOOST_CHECK_EQUAL( direction->GetDirection(), expectedValue );
+}
+
+BOOST_AUTO_TEST_CASE( turn_right_valid_west )
+{
+    direction->SetDirection( Direction::WEST );
+    direction->TurnRight();
+    Direction::DirectionEnum expectedValue = Direction::NORTH;
     BOOST_CHECK_EQUAL( direction->GetDirection(), expectedValue );
 }
 

@@ -28,6 +28,7 @@ add_executable( ${TARGET}
     test_direction.cpp
     test_grid.cpp
     test_move_command.cpp
+    test_parser.cpp
     test_place_command.cpp
     test_position.cpp
     test_report_command.cpp
