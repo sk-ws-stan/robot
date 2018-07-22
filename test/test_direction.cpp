@@ -1,9 +1,9 @@
 #ifndef UT_TOYROBOT_DIRECTION_H
 #define UT_TOYROBOT_DIRECTION_H
 
-#include <boost/test/unit_test.hpp>
+#include <direction.h>
 
-#include "../src/direction.h"
+#include <boost/test/unit_test.hpp>
 
 using namespace ToyRobot;
 
@@ -25,24 +25,24 @@ struct DirectionFixture
     Direction* direction;
 };
 
-BOOST_FEATURE_TEST_SUITE( direction_tests, DirectionFixture )
+BOOST_FIXTURE_TEST_SUITE( direction_tests, DirectionFixture )
 
 BOOST_AUTO_TEST_CASE( initialisation )
 {
-    DirectionEnum expectedValue = Direction::INVALID;
+    Direction::DirectionEnum expectedValue = Direction::INVALID;
     BOOST_CHECK_EQUAL( direction->GetDirection(), expectedValue );
 }
 
 BOOST_AUTO_TEST_CASE( initialisation2 )
 {
-    DirectionEnum value = Direction::NORTH;
+    Direction::DirectionEnum value = Direction::NORTH;
     Direction dir( value );
-    BOOST_CHECK_EQUAL( dir->GetDirection(), value );
+    BOOST_CHECK_EQUAL( dir.GetDirection(), value );
 }
 
 BOOST_AUTO_TEST_CASE( set_value )
 {
-    DirectionEnum value = Direction::NORTH;
+    Direction::DirectionEnum value = Direction::NORTH;
     direction->SetDirection( value );
     BOOST_CHECK_EQUAL( direction->GetDirection(), value );
 }
@@ -85,7 +85,7 @@ BOOST_AUTO_TEST_CASE( turn_left_valid )
 {
     direction->SetDirection( Direction::SOUTH );
     direction->TurnLeft();
-    Direction expectedValue( Direction::WEST );
+    Direction::DirectionEnum expectedValue = Direction::EAST;
     BOOST_CHECK_EQUAL( direction->GetDirection(), expectedValue );
 }
 
@@ -93,7 +93,7 @@ BOOST_AUTO_TEST_CASE( turn_left_invalid )
 {
     direction->SetDirection( Direction::INVALID );
     direction->TurnLeft();
-    Direction expectedValue( Direction::INVALID );
+    Direction::DirectionEnum expectedValue = Direction::INVALID;
     BOOST_CHECK_EQUAL( direction->GetDirection(), expectedValue );
 }
 
@@ -101,7 +101,7 @@ BOOST_AUTO_TEST_CASE( turn_right_valid )
 {
     direction->SetDirection( Direction::EAST );
     direction->TurnRight();
-    Direction expectedValue( Direction::SOUTH );
+    Direction::DirectionEnum expectedValue = Direction::SOUTH;
     BOOST_CHECK_EQUAL( direction->GetDirection(), expectedValue );
 }
 
@@ -109,7 +109,7 @@ BOOST_AUTO_TEST_CASE( turn_right_invalid )
 {
     direction->SetDirection( Direction::INVALID );
     direction->TurnLeft();
-    Direction expectedValue( Direction::INVALID );
+    Direction::DirectionEnum expectedValue = Direction::INVALID;
     BOOST_CHECK_EQUAL( direction->GetDirection(), expectedValue );
 }
 

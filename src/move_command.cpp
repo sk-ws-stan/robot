@@ -1,8 +1,6 @@
 #include "move_command.h"
 #include "direction.h"
 
-#include <tuple>
-
 namespace ToyRobot
 {
 

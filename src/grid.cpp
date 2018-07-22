@@ -21,7 +21,7 @@ const int Grid::GetY() const
 
 const bool Grid::OnGrid( const int& x, const int& y ) const
 {
-    return ( ( 0 <= x <= m_x ) && ( 0 <= y <= m_y ) );
+    return ( ( 0 <= x ) && ( x <= m_x ) && ( 0 <= y ) && ( y <= m_y ) );
 }
 
 }

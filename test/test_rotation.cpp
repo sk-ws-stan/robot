@@ -1,7 +1,7 @@
 #ifndef UT_TOYROBOT_ROTATION_H
 #define UT_TOYROBOT_ROTATION_H
 
-#include "../src/rotation.h"
+#include <rotation.h>
 
 #include <boost/test/unit_test.hpp>
 

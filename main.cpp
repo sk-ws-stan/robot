@@ -36,7 +36,7 @@ int main (int argc, char *argv[])
     catch( ... )
     {
         std::cerr << "Caught unknown exception" << std::endl;
-        return EXIT_FAILURE;
+        return 1;
     }
     return 0;
 }

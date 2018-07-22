@@ -1,4 +1,7 @@
-add_executable( toy_robot
+set( TARGET LIB_ROBOT )
+
+#add_executable( toy_robot
+add_library( ${TARGET}
     command.h
     coordinates.cpp
     coordinates.h
@@ -6,7 +9,7 @@ add_executable( toy_robot
     direction.h
     grid.cpp
     grid.h
-    main.cpp
+#    main.cpp
     move_command.cpp
     move_command.h
 #    parser.cpp

@@ -11,7 +11,7 @@ Robot::Robot( const Grid& grid ) :
 
 void Robot::DoExecute( Command& command )
 {
-   command.Execute( m_position, m_grid );
+   m_position = command.Execute( m_position, m_grid );
 }
 
 }
