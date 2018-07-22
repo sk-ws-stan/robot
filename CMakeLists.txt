@@ -1,12 +1,10 @@
 cmake_minimum_required( VERSION 2.8.4 )
 
-option( BUILD_UNIT_TEST "unit tests?" OFF )
-
 set( SOURCE_CODE_BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src" CACHE PATH "src" )
 
 set( THIRD_PARTY_ROOT "set_third_party_root_yourself" CACHE PATH "Third party root directory" )
 
-set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x" )
+set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x" ) #alternativly ADD_DEFINITIONS("-std=c++0x")
 
 if( EXISTS ${THIRD_PARTY_ROOT}/boost)
     add_definitions( -DBOOST_CB_DISABLE_DEBUG )
@@ -43,6 +41,8 @@ endif()
 add_subdirectory( ${SOURCE_CODE_BASE_DIR} )
 include_directories( ${SOURCE_CODE_BASE_DIR} )
 link_directories( ${SOURCE_CODE_BASE_DIR} )
+
+option( BUILD_UNIT_TEST "unit tests?" OFF )
 
 if( ${BUILD_UNIT_TEST} )
     add_subdirectory( test )

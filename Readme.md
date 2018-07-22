@@ -65,3 +65,43 @@ REPORT
 ## Deliverables
 
 Please provide your source code, and any test code/data you using in developing your solution.
+
+## Getting the project
+
+### git
+
+Clone the repository from `ssh://git@bitbucket`, ``, or `` (http: ``, ``, or ``).
+
+### TFS
+
+
+
+## Building the project
+
+The project compiles as `toy_robot` in your build directory. The unit test project compiles as `test/test_toy_robot`.
+
+### Dependencies
+
+The project includes headers for the boost libraries `algorithm` and `lexical_cast` and the unit test project links against the `boost unit test framework`. Tested versions are `1.50.0` with `gcc 4.6.3`, and `1.61.0` with `v140 (VS 2015)` and `v141 (VS 2017)`.
+
+Get boost at `https://www.boost.org/users/download/`
+
+It is recommended to build the project with `CMake` and out of source, however in-source builds are supported. For legacy reasons it is aspired to support a IressSource build for Windows, but as this is a legacy system the support (is as mentioned aspirational and) might be out of date.
+
+### CMake (2.8.4 and newer)
+
+Run cmake-gui and configure from the source root of the project. Point the required setting `THIRD_PARTY_ROOT` to the directory that contains your boost install. To build the unit tests project set the option `BUILD_UNIT_TESTS`.
+
+#### Commandline
+
+For the source root, run `cmake` with the options `-DTHIRD_PARTY_ROOT=<path to your 3rd Party root` and optionally `BUILD_UNIT_TEST=ON`.
+
+Example
+```
+sk@ws-stan:~/dev/src/robot (master)$ cmake . -DTHIRD_PARTY_ROOT=~/dev/src/3rd -DBUILD_UNIT_TEST=ON
+```
+
+### Windows
+
+#### Iress Source
+
