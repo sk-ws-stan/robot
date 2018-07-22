@@ -38,9 +38,9 @@ BOOST_AUTO_TEST_CASE( initialisation2 )
 {
     int xValue = 3;
     int yValue = 5;
-    Coordinates coords( 3, 5 );
-    BOOST_CHECK_EQUAL( coords.GetX(), xValue );
-    BOOST_CHECK_EQUAL( coords.GetY(), yValue );
+    coordinates = new Coordinates( 3, 5 );
+    BOOST_CHECK_EQUAL( coordinates->GetX(), xValue );
+    BOOST_CHECK_EQUAL( coordinates->GetY(), yValue );
 }
 
 BOOST_AUTO_TEST_CASE( set_value )

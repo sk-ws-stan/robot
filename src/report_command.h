@@ -2,11 +2,12 @@
 #define TOYROBOT_REPORT_COMMAND_H
 
 #include "command.h"
-#include "grid.h"
-#include "position.h"
 
 namespace ToyRobot
 {
+    class Grid;
+    class Position;
+
     class ReportCommand : public Command
     {
     public:

@@ -56,5 +56,4 @@ add_executable( ${TARGET}
 
 target_link_libraries( ${TARGET}
     LIB_ROBOT
-#    ${BOOST_FUNCTION_LIBRARY}
 )

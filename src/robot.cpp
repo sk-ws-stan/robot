@@ -1,5 +1,5 @@
-#include "robot.h"
 #include "command.h"
+#include "robot.h"
 
 namespace ToyRobot
 {

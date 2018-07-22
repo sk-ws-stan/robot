@@ -1,3 +1,6 @@
+#include "direction.h"
+#include "grid.h"
+#include "position.h"
 #include "rotate_command.h"
 
 namespace ToyRobot

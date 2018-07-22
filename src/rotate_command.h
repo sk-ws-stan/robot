@@ -6,6 +6,9 @@
 
 namespace ToyRobot
 {
+    class Grid;
+    class Position;
+
     class RotateCommand : public Command
     {
     public:

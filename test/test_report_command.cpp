@@ -4,11 +4,11 @@
 #include <coordinates.h>
 #include <direction.h>
 #include <grid.h>
-#include <report_command.h>
 #include <position.h>
+#include <report_command.h>
 
-#include <boost/test/unit_test.hpp>
 #include <boost/test/output_test_stream.hpp>
+#include <boost/test/unit_test.hpp>
 
 #include <iostream>
 
@@ -17,8 +17,8 @@ using namespace ToyRobot;
 namespace UnitTestToyRobot
 {
 
-const int c_defaultX = 5;
-const int c_defaultY = 5;
+const int c_defaultX = 4;
+const int c_defaultY = 4;
 
 struct ReportCommandFixture
 {

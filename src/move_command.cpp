@@ -1,5 +1,7 @@
-#include "move_command.h"
 #include "direction.h"
+#include "grid.h"
+#include "move_command.h"
+#include "position.h"
 
 namespace ToyRobot
 {
@@ -10,7 +12,6 @@ MoveCommand::MoveCommand() :
 
 const Position MoveCommand::Execute( const Position& position, const Grid& grid )
 {
-    //what if the position is not set yet?
     Coordinates newCoordinates = position.GetCoordinates();
 
     switch( position.GetDirection().GetDirection() )

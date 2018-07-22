@@ -1,13 +1,14 @@
-#include "parser.h"
+#include "direction.h"
 #include "move_command.h"
+#include "parser.h"
 #include "place_command.h"
 #include "report_command.h"
 #include "rotate_command.h"
-#include "direction.h"
 
 #include <boost/algorithm/string.hpp>
 #include <boost/lexical_cast.hpp>
 
+#include <string>
 #include <vector>
 
 namespace ToyRobot
@@ -34,7 +35,7 @@ void Parser::ParseInput( const std::string& input )
                 Position position;
                 position.SetCoordinates(
                     Coordinates( boost::lexical_cast< int >( tokens.at( 1 ) ), boost::lexical_cast< int >( tokens.at( 2 ) ) ) );
-                position.SetDirection( Direction( tokens.at( 3 ) ) );
+                position.SetDirection( Direction( boost::to_upper_copy( tokens.at( 3 ) ) ) );
                 std::shared_ptr< Command > placeCmd{ new PlaceCommand( position ) };
                 m_commandFunctor( placeCmd );
             }

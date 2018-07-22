@@ -1,11 +1,11 @@
 #ifndef TOYROBOT_COMMAND_H
 #define TOYROBOT_COMMAND_H
 
-#include "grid.h"
-#include "position.h"
-
 namespace ToyRobot
 {
+    class Grid;
+    class Position;
+
     class Command
     {
     public:

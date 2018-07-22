@@ -2,11 +2,12 @@
 #define TOYROBOT_PLACE_COMMAND_H
 
 #include "command.h"
-#include "grid.h"
 #include "position.h"
 
 namespace ToyRobot
 {
+    class Grid;
+
     class PlaceCommand : public Command
     {
     public:

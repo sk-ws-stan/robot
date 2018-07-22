@@ -14,9 +14,8 @@ using namespace ToyRobot;
 namespace UnitTestToyRobot
 {
 
-const int c_defaultX = 5;
-const int c_defaultY = 5;
-
+const int c_defaultX = 4;
+const int c_defaultY = 4;
 
 BOOST_AUTO_TEST_SUITE( place_tests )
 
@@ -69,9 +68,6 @@ BOOST_AUTO_TEST_CASE( place_invalid_coordinates )
     BOOST_CHECK_EQUAL( newPosition.GetCoordinates().GetY(), expectedCoordinates.GetY() );
     BOOST_CHECK_EQUAL( newPosition.GetDirection().GetDirection(), expectedDirection );
 }
-
-//place already placed? need to check validity of command
-
 
 BOOST_AUTO_TEST_SUITE_END()
 

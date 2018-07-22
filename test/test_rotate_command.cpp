@@ -14,8 +14,8 @@ using namespace ToyRobot;
 namespace UnitTestToyRobot
 {
 
-const int c_defaultX = 5;
-const int c_defaultY = 5;
+const int c_defaultX = 4;
+const int c_defaultY = 4;
 
 struct RotateCommandFixture
 {
@@ -45,6 +45,7 @@ BOOST_AUTO_TEST_CASE( rotate_left )
     Coordinates expectedCoordinates( 0, 0 );
     Direction::DirectionEnum expectedDirection = Direction::WEST;
     Position newPosition = rotateCommand->Execute( position, grid );
+
     BOOST_CHECK_EQUAL( newPosition.GetCoordinates().GetX(), expectedCoordinates.GetX() );
     BOOST_CHECK_EQUAL( newPosition.GetCoordinates().GetY(), expectedCoordinates.GetY() );
     BOOST_CHECK_EQUAL( newPosition.GetDirection().GetDirection(), expectedDirection );
@@ -55,8 +56,9 @@ BOOST_AUTO_TEST_CASE( rotate_right )
     Coordinates expectedCoordinates( 0, 0 );
     Direction::DirectionEnum expectedDirection = Direction::EAST;
     rotation.m_rotation = Rotation::RIGHT;
-    RotateCommand rotCommand = RotateCommand( rotation );
-    Position newPosition = rotCommand.Execute( position, grid );
+    rotateCommand = new RotateCommand( rotation );
+    Position newPosition = rotateCommand->Execute( position, grid );
+
     BOOST_CHECK_EQUAL( newPosition.GetCoordinates().GetX(), expectedCoordinates.GetX() );
     BOOST_CHECK_EQUAL( newPosition.GetCoordinates().GetY(), expectedCoordinates.GetY() );
     BOOST_CHECK_EQUAL( newPosition.GetDirection().GetDirection(), expectedDirection );
@@ -67,8 +69,9 @@ BOOST_AUTO_TEST_CASE( rotate_invalid )
     Coordinates expectedCoordinates( 0, 0 );
     Direction::DirectionEnum expectedDirection = Direction::NORTH;
     rotation.m_rotation = Rotation::INVALID;
-    RotateCommand rotCommand = RotateCommand( rotation );
-    Position newPosition = rotCommand.Execute( position, grid );
+    rotateCommand = new RotateCommand( rotation );
+    Position newPosition = rotateCommand->Execute( position, grid );
+
     BOOST_CHECK_EQUAL( newPosition.GetCoordinates().GetX(), expectedCoordinates.GetX() );
     BOOST_CHECK_EQUAL( newPosition.GetCoordinates().GetY(), expectedCoordinates.GetY() );
     BOOST_CHECK_EQUAL( newPosition.GetDirection().GetDirection(), expectedDirection );

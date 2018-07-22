@@ -6,8 +6,6 @@
 #include <boost/bind.hpp>
 #include <boost/function.hpp>
 
-#include <string>
-
 namespace ToyRobot
 {
     typedef boost::function< void( std::shared_ptr< Command >& ) > CommandFunctor;

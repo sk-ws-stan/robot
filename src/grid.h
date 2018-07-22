@@ -11,7 +11,6 @@ namespace ToyRobot
 
         const int GetX() const;
         const int GetY() const;
-
         const bool OnGrid( const int& x, const int& y ) const;
 
     private:
@@ -20,4 +19,3 @@ namespace ToyRobot
     };
 }
 #endif
-

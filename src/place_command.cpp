@@ -1,3 +1,4 @@
+#include "grid.h"
 #include "place_command.h"
 
 namespace ToyRobot
