@@ -3,9 +3,7 @@
 #include <parser.h>
 #include <robot.h>
 
-#include <boost/bind.hpp>
-#include <boost/function.hpp>
-
+#include <functional>
 #include <fstream>
 #include <iostream>
 
@@ -24,7 +22,7 @@ int main( int argc, char* argv[] )
         Grid grid = Grid( c_GridDefaultSizeX, c_GridDefaultSizeY );
         Robot robot = Robot( grid );
         //function pointer for parser
-        boost::function< void( std::shared_ptr< Command >& ) > doExecuteFunction( boost::bind( &Robot::DoExecute, robot, _1 ) );
+        std::function< void( std::shared_ptr< Command >& ) > doExecuteFunction( std::bind( &Robot::DoExecute, robot, std::placeholders::_1 ) );
 
         Parser parser = Parser( doExecuteFunction );
 

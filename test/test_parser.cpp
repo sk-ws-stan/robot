@@ -5,9 +5,8 @@
 #include <parser.h>
 
 #include <boost/test/unit_test.hpp>
-#include <boost/function.hpp>
-#include <boost/bind.hpp>
 
+#include <functional>
 #include <string>
 
 using namespace ToyRobot;
@@ -30,7 +29,7 @@ struct ParserFixture
     ParserFixture() :
         isValidCommand( false )
     {
-        boost::function< void( std::shared_ptr< Command >& ) > commandFunctor( boost::bind( &ParserFixture::DoExecute, this, _1 ) );
+        std::function< void( std::shared_ptr< Command >& ) > commandFunctor( std::bind( &ParserFixture::DoExecute, this, std::placeholders::_1 ) );
         parser = new Parser( commandFunctor );
     }
 

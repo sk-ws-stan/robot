@@ -3,12 +3,12 @@
 
 #include "command.h"
 
-#include <boost/bind.hpp>
-#include <boost/function.hpp>
+#include <functional>
+#include <memory>
 
 namespace ToyRobot
 {
-    typedef boost::function< void( std::shared_ptr< Command >& ) > CommandFunctor;
+    typedef std::function< void( std::shared_ptr< Command >& ) > CommandFunctor;
 
     class Parser
     {

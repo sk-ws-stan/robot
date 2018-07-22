@@ -16,6 +16,7 @@ namespace ToyRobot
 
         virtual const Position Execute( const Position& position, const Grid& grid );
     private:
+        bool Guard( const Grid& grid ) const;
         Position m_position;
     };
 }

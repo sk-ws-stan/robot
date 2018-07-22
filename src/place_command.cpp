@@ -13,12 +13,17 @@ const Position PlaceCommand::Execute( const Position& /*position*/, const Grid& 
 {
     Position returnValue;
 
-    if( ( grid.OnGrid( m_position.GetCoordinates().GetX(), m_position.GetCoordinates().GetY() ) ) &&
-        ( m_position.GetDirection().GetDirection() != Direction::INVALID ) )
+    if( Guard( grid ) )
     {
         returnValue = m_position;
     }
     return returnValue;
+}
+
+bool PlaceCommand::Guard( const Grid& grid ) const
+{
+    return grid.OnGrid( m_position.GetCoordinates().GetX(), m_position.GetCoordinates().GetY() ) &&
+        ( m_position.GetDirection().GetDirection() != Direction::INVALID );
 }
 
 }
