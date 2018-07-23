@@ -39,7 +39,7 @@ void Parser::ParseInput( const std::string& input )
                 std::shared_ptr< Command > placeCmd{ new PlaceCommand( position ) };
                 m_commandFunctor( placeCmd );
             }
-            catch( boost::bad_lexical_cast& e )
+            catch( boost::bad_lexical_cast& /*e*/ )
             {
                 //cerr or just ignore command?
             }

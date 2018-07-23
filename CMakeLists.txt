@@ -1,10 +1,17 @@
 cmake_minimum_required( VERSION 2.8.4 )
 
+set( PROJECT toy_robot )
+
 set( SOURCE_CODE_BASE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/src" CACHE PATH "src" )
 
-set( THIRD_PARTY_ROOT "set_third_party_root_yourself" CACHE PATH "Third party root directory" )
+set( THIRD_PARTY_ROOT "${CMAKE_CURRENT_SOURCE_DIR}/3rd" CACHE PATH "Third party root directory" )
 
-set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x" ) #alternativly ADD_DEFINITIONS("-std=c++0x")
+#setting this for gcc legacy build system
+if( NOT CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.7 )
+    set( CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++0x" )
+endif()
+
+option( BUILD_UNIT_TEST "unit tests?" ON )
 
 if( EXISTS ${THIRD_PARTY_ROOT}/boost )
     add_definitions( -DBOOST_CB_DISABLE_DEBUG )
@@ -28,27 +35,24 @@ if( EXISTS ${THIRD_PARTY_ROOT}/boost )
         CACHE BOOL "Link against multithreaded Boost Libraries" )
     set( Boost_ADDITIONAL_VERSIONS "1.50.0;1.50;1.61.0;1.61"
         CACHE STRING "List of boost versions not yet searched for by cmake" )
-    find_package( Boost REQUIRED
-        prg_exec_monitor
-        test_exec_monitor
-        unit_test_framework )
+    find_package( Boost REQUIRED unit_test_framework )
     include_directories( ${Boost_INCLUDE_DIRS} )
     message( STATUS "Boost_LIBRARY_DIRS=${Boost_LIBRARY_DIRS}")
     LINK_DIRECTORIES( ${Boost_LIBRARY_DIRS} )
 else()
-    find_package( Boost REQUIRED
-        prg_exec_monitor
-        unit_test_framework )
-    include_directories( ${boost_INCLUDE_DIRS} ) # lower case through conan's Findboost.cmake
-    message( STATUS "Boost_LIBRARY_DIRS=${boost_LIB_DIRS}")
-    LINK_DIRECTORIES( ${boost_LIB_DIRS} )
+    #conan install generates its own Findboost.cmake, however it is incapable of static linking
+    find_package( Boost )
+    # lower case through conan's Findboost.cmake
+    include_directories( ${boost_INCLUDE_DIRS} )
+    #can't link statically - commenting out and turnung off build for unit tests
+    #message( STATUS "Boost_LIBRARY_DIRS=${boost_LIB_DIRS}")
+    #LINK_DIRECTORIES( ${boost_LIB_DIRS} )
+    set( BUILD_UNIT_TEST OFF )
 endif()
 
 add_subdirectory( ${SOURCE_CODE_BASE_DIR} )
 include_directories( ${SOURCE_CODE_BASE_DIR} )
 link_directories( ${SOURCE_CODE_BASE_DIR} )
-
-option( BUILD_UNIT_TEST "unit tests?" OFF )
 
 if( ${BUILD_UNIT_TEST} )
     add_subdirectory( test )
