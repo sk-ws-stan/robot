@@ -7,3 +7,12 @@ CMakeCache.txt
 toy_robot
 test_toy_robot
 *.swp
+.vs
+Release
+Win32
+Debug
+Findboost.cmake
+*.vcxproj*
+conanbuildinfo.*
+conaninfo.txt
+*.sln

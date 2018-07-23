@@ -70,23 +70,36 @@ Please provide your source code, and any test code/data you using in developing 
 
 ### git
 
-Clone the repository from `ssh://git@bitbucket`, ``, or `` (http: ``, ``, or ``).
+Clone the repository from one of the following locations:  
+
+* GitHub Original
+    * ssh: `git@github.com:sk-ws-stan/robot.git`
+    * https: `https://github.com/sk-ws-stan/robot.git`
+* GitHub fork of sk-ws-stan (Iress account)
+    * ssh: `git@github.com:StanleyKlemme/robot.git`
+    * https: `https://github.com/StanleyKlemme/robot.git`
+* BitBucket fork of StanleyKlemme/robot
+    * ssh: `git@bitbucket.devel.iress.com.au:7999/~stanley.klemme/robot.git`
+    * https: `https://Stanley.Klemme@bitbucket.devel.iress.com.au/scm/~stanley.klemme/robot.git`
 
 ### TFS
 
-
+A legacy check-in is provided at `$\Iress\UserProjects\stanley.klemme\Training\main\robot`
 
 ## Building the project
 
-The project compiles as `toy_robot` in your build directory. The unit test project compiles as `test/test_toy_robot`.
+The project compiles with C++11 as `toy_robot` in your build directory. The unit test project compiles as `test/test_toy_robot`.
+
+It is recommended to build the project with `CMake` and out of source, however in-source builds are supported.
+Alternatively the project supports building with `Conan`.
+For legacy reasons it is aspired to support a IressSource build for Windows, but as this is a legacy system the support (is as mentioned aspirational and) might be out of date.
 
 ### Dependencies
 
-The project includes headers for the boost libraries `algorithm` and `lexical_cast` and the unit test project links against the `boost unit test framework`. Tested versions are `1.50.0` with `gcc 4.6.3`, and `1.61.0` with `v140 (VS 2015)` and `v141 (VS 2017)`.
+The project includes headers for the boost libraries `algorithm` and `lexical_cast` and the unit test project links against the `boost unit test framework`. Tested versions are `1.50.0` with `gcc 4.6.3`, and `1.61.0` with `v140`.
 
 Get boost at `https://www.boost.org/users/download/`
 
-It is recommended to build the project with `CMake` and out of source, however in-source builds are supported. For legacy reasons it is aspired to support a IressSource build for Windows, but as this is a legacy system the support (is as mentioned aspirational and) might be out of date.
 
 ### CMake (2.8.4 and newer)
 
@@ -101,7 +114,10 @@ Example
 sk@ws-stan:~/dev/src/robot (master)$ cmake . -DTHIRD_PARTY_ROOT=~/dev/src/3rd -DBUILD_UNIT_TEST=ON
 ```
 
-### Windows
+### Conan (1.4 and newer)
 
-#### Iress Source
+The project supports building with conan. First run `conan install -s build_type=Release -s arch=x86 .` to generate the required local conanfiles and obtain the boost libraries. Then run `conan build .` to build the project for the build_type Release in 32bit. The conan build will automatically build the unit test project.
 
+### Iress Source (Windows only)
+
+comming soon
