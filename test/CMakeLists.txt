@@ -14,8 +14,15 @@ add_executable( ${TARGET}
     test_rotation.cpp
 )
 
+#boost 1.50 uses test exec monitor, 1.61 prg exec monitor
+set( EXEC_MONITOR "" )
+if( DEFINED Boost_TEST_EXEC_MONITOR_LIBRARY )
+    set( EXEC_MONITOR ${Boost_TEST_EXEC_MONITOR_LIBRARY} )
+else()
+    set( EXEC_MONITOR ${Boost_PRG_EXEC_MONITOR_LIBRARY} )
+endif()
 target_link_libraries( ${TARGET}
     LIB_ROBOT
-    ${Boost_TEST_EXEC_MONITOR_LIBRARY}
+    ${EXEC_MONITOR}
     ${BOOST_UNIT_TEST_FRAMEWORK_LIBRARY}
 )
