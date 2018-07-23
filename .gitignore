@@ -6,3 +6,4 @@ CMakeCache.txt
 *.a
 toy_robot
 test_toy_robot
+*.swp
