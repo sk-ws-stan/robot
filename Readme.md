@@ -116,8 +116,8 @@ sk@ws-stan:~/dev/src/robot (master)$ cmake . -DTHIRD_PARTY_ROOT=~/dev/src/3rd -D
 
 ### Conan (1.4 and newer)
 
-The project supports building with conan. First run `conan install -s build_type=Release -s arch=x86 .` to generate the required local conanfiles and obtain the boost libraries. Then run `conan build .` to build the project for the build_type Release in 32bit. The conan build will automatically build the unit test project.
+The project supports building with conan. First run `conan install -s build_type=Release -s arch=x86 .` to generate the required local conanfiles and obtain the boost libraries. Then run `conan build .` to build the project for the build_type Release in 32bit. The conan build will currently not build the unit test project.
 
 ### Iress Source (Windows only)
 
-comming soon
+coming soon
