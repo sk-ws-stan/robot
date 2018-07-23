@@ -26,10 +26,11 @@ if( EXISTS ${THIRD_PARTY_ROOT}/boost )
         CACHE BOOL "Use static runtime library" )
     set( Boost_USE_MULTITHREADED ON
         CACHE BOOL "Link against multithreaded Boost Libraries" )
-    set( Boost_ADDITIONAL_VERSIONS "1.50.0;1.50;1.59.0;1.59;1.61.0;1.61"
+    set( Boost_ADDITIONAL_VERSIONS "1.50.0;1.50;1.61.0;1.61"
         CACHE STRING "List of boost versions not yet searched for by cmake" )
     find_package( Boost REQUIRED
         prg_exec_monitor
+        test_exec_monitor
         unit_test_framework )
     include_directories( ${Boost_INCLUDE_DIRS} )
     message( STATUS "Boost_LIBRARY_DIRS=${Boost_LIBRARY_DIRS}")
