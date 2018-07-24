@@ -14,15 +14,18 @@ add_executable( ${TARGET}
     test_rotation.cpp
 )
 
-#boost 1.50 uses test exec monitor, 1.61 prg exec monitor
-set( EXEC_MONITOR "" )
-if( DEFINED Boost_TEST_EXEC_MONITOR_LIBRARY )
-    set( EXEC_MONITOR ${Boost_TEST_EXEC_MONITOR_LIBRARY} )
-else()
-    set( EXEC_MONITOR ${Boost_PRG_EXEC_MONITOR_LIBRARY} )
-endif()
 target_link_libraries( ${TARGET}
     LIB_ROBOT
-    ${EXEC_MONITOR}
-    ${BOOST_UNIT_TEST_FRAMEWORK_LIBRARY}
+    #if not set this does not do any harm
+    ${Boost_TEST_EXEC_MONITOR_LIBRARY}
+    ${Boost_UNIT_TEST_FRAMEWORK_LIBRARY}
 )
+#building unit tests is currently disabled via conan - leaving this logic here regardless
+#to cater for conan's inability of providing individual libs in boost
+foreach( boost_LIB ${boost_LIBS} )
+    string( FIND ${boost_LIB} "unit_test" UT_FOUND )
+    string( FIND ${boost_LIB} "exec_moni" EX_FOUND )
+    if( UT_FOUND GREATER "-1" OR EX_FOUND GREATER "-1" )
+        target_link_libraries( ${TARGET} ${boost_LIB} )
+    endif()
+endforeach()

@@ -1,6 +1,5 @@
 import yaml
 from conans import ConanFile, tools, CMake
-from iressconanutils.tools import msvc_build_command, group_output
 
 class ToyRobotConan(ConanFile):
     name = "ToyRobot"
@@ -14,24 +13,18 @@ class ToyRobotConan(ConanFile):
     exports_sources = (
         "src/*"
     )
-    generators = "visual_studio", "cmake", "cmake_find_package"
+    generators = "cmake_find_package", "cmake"
     settings = "os", "compiler", "build_type", "arch"
-    cmake_options = { "BUILD_UNIT_TEST" : "ON" }
+    cmake_options = {
+        "BUILD_UNIT_TEST" : "OFF", #needs to be off until conan can findboost statically linkable
+    }
 
-    @group_output
     def build(self):
         print("Generating project...")
         cmake = CMake(self)
         cmake.verbose = True
         cmake.configure( defs=self.cmake_options )
-        print("Building project...")
-        build_command = msvc_build_command(
-            self.settings,
-            "toy_robot.vcxproj",
-            upgrade_project=False
-        )
-        self.output.info("Build command: %s" % build_command)
-        self.run(build_command)
+        cmake.build()
 
     def package(self):
         output_folder = 'bin/' + str(self.settings.build_type).lower() + ('x64' if '64' in str(self.settings.arch) else '')

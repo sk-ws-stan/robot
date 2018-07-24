@@ -56,8 +56,8 @@ BOOST_AUTO_TEST_CASE( rotate_right )
     Coordinates expectedCoordinates( 0, 0 );
     Direction::DirectionEnum expectedDirection = Direction::EAST;
     rotation.m_rotation = Rotation::RIGHT;
-    rotateCommand = new RotateCommand( rotation );
-    Position newPosition = rotateCommand->Execute( position, grid );
+    RotateCommand rotCommand = RotateCommand( rotation );
+    Position newPosition = rotCommand.Execute( position, grid );
 
     BOOST_CHECK_EQUAL( newPosition.GetCoordinates().GetX(), expectedCoordinates.GetX() );
     BOOST_CHECK_EQUAL( newPosition.GetCoordinates().GetY(), expectedCoordinates.GetY() );
@@ -69,8 +69,8 @@ BOOST_AUTO_TEST_CASE( rotate_invalid )
     Coordinates expectedCoordinates( 0, 0 );
     Direction::DirectionEnum expectedDirection = Direction::NORTH;
     rotation.m_rotation = Rotation::INVALID;
-    rotateCommand = new RotateCommand( rotation );
-    Position newPosition = rotateCommand->Execute( position, grid );
+    RotateCommand rotCommand = RotateCommand(rotation);
+    Position newPosition = rotCommand.Execute(position, grid);
 
     BOOST_CHECK_EQUAL( newPosition.GetCoordinates().GetX(), expectedCoordinates.GetX() );
     BOOST_CHECK_EQUAL( newPosition.GetCoordinates().GetY(), expectedCoordinates.GetY() );
