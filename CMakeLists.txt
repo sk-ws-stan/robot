@@ -39,15 +39,15 @@ if( EXISTS ${THIRD_PARTY_ROOT}/boost )
     include_directories( ${Boost_INCLUDE_DIRS} )
     message( STATUS "Boost_LIBRARY_DIRS=${Boost_LIBRARY_DIRS}")
     LINK_DIRECTORIES( ${Boost_LIBRARY_DIRS} )
+    set( UNIT_TEST_DIR test )
 else()
-    #conan install generates its own Findboost.cmake, however it is incapable of static linking
+    #conan install generates its own Findboost.cmake
     find_package( Boost )
+    #however it is incapable of static linking
+    #providing header only implementation
+    set( UNIT_TEST_DIR test_header_only )
     # lower case through conan's Findboost.cmake
     include_directories( ${boost_INCLUDE_DIRS} )
-    #can't link statically - commenting out and turnung off build for unit tests
-    #message( STATUS "Boost_LIBRARY_DIRS=${boost_LIB_DIRS}")
-    #LINK_DIRECTORIES( ${boost_LIB_DIRS} )
-    set( BUILD_UNIT_TEST OFF )
 endif()
 
 add_subdirectory( ${SOURCE_CODE_BASE_DIR} )
@@ -55,7 +55,7 @@ include_directories( ${SOURCE_CODE_BASE_DIR} )
 link_directories( ${SOURCE_CODE_BASE_DIR} )
 
 if( ${BUILD_UNIT_TEST} )
-    add_subdirectory( test )
+    add_subdirectory( ${UNIT_TEST_DIR} )
 endif()
 
 set( TARGET toy_robot )

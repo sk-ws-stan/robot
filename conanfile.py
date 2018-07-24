@@ -16,7 +16,8 @@ class ToyRobotConan(ConanFile):
     generators = "cmake_find_package", "cmake"
     settings = "os", "compiler", "build_type", "arch"
     cmake_options = {
-        "BUILD_UNIT_TEST" : "OFF", #needs to be off until conan can findboost statically linkable
+        "BUILD_UNIT_TEST" : "ON",
+        "CMAKE_GENERATOR_TOOLSET" : "v140",
     }
 
     def build(self):

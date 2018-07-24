@@ -88,23 +88,28 @@ A legacy check-in is provided at `$\Iress\UserProjects\stanley.klemme\Training\m
 
 ## Building the project
 
-The project compiles with C++11 as `toy_robot` in your build directory. The unit test project compiles as `test/test_toy_robot`.
-
 It is recommended to build the project with `CMake` and out of source, however in-source builds are supported.
-Alternatively the project toy_robot supports to be built with `Conan`.
+Alternatively the project supports to be built with `Conan`.
 For legacy reasons it is aspired to support a IressSource build for Windows, but as this is a legacy system the support (is as mentioned aspirational and) might be out of date.
+
+The project compiles with C++11 as `toy_robot` in your build directory. The statically linked unit test project compiles as `test/test_toy_robot`, while the header only implementation compiles as `test_header_only/test_toy_robot_header_only` (see section Dependencies).
 
 ### Dependencies
 
-The project includes headers for the boost libraries and the unit test project links statically against the `boost unit test framework`. Tested versions are `1.50.0` with `gcc 4.6.3`, and `1.61.0` with `v140`.
+The project includes headers for the boost libraries. The unit test project can either link statically against the `boost unit test framework` or use a header only implementation. Conan builds will automatically chose the header only implementation, while a CMake build offers the choice of linking statically.
+
+Tested versions are `1.50.0` with `gcc 4.6.3`, and `1.61.0` with `v140`.
 
 Get boost at `https://www.boost.org/users/download/`
 
 For convenience boost includes and Windows static libraries for the unittest framework are provided (Linux to come) in the directory `3rd` on the branch `win_static_boost_libs`.
+Static boost libraries required are `Boost_TEST_EXEC_MONITOR_LIBRARY` and `Boost_UNIT_TEST_FRAMEWORK_LIBRARY`.
 
 ### CMake (2.8.4 and newer)
 
 Run cmake-gui and configure from the source root of the project. Point the required setting `THIRD_PARTY_ROOT` to the directory that contains your boost install, if you are not using the shipped one. To build the unit tests project set the option `BUILD_UNIT_TESTS`.
+
+It possible to build a header only unit test project (located in sub-directory `test_header_only`) or statically linking (located in sub-directory `test`), given the required static boost unit test libraries are provided.
 
 #### Commandline
 
@@ -117,7 +122,7 @@ sk@ws-stan:~/dev/src/robot (master)$ cmake . -DTHIRD_PARTY_ROOT=~/dev/src/3rd -D
 
 ### Conan (1.4 and newer)
 
-The project supports building with conan. First run `conan install -s build_type=Release -s arch=x86 .` to generate the required local conanfiles and obtain the boost libraries. Then run `conan build .` to build the project for the build_type Release in 32bit. The conan build will currently not build the unit test project.
+The project supports building with conan. First run `conan install -s build_type=Release -s arch=x86 .` to generate the required local conanfiles and obtain the boost libraries. Then run `conan build .` to build the project for the build_type Release in 32bit. The conan build will automatically build the unit test project as header only.
 
 ### Iress Source (Windows only)
 
