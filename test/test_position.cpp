@@ -40,10 +40,10 @@ BOOST_AUTO_TEST_CASE( initialisation2 )
 {
     Direction::DirectionEnum expectedDirection = Direction::WEST;
     Coordinates expectedCoordinates( 1, 1 );
-    position = new Position( Coordinates( 1, 1 ), Direction( Direction::WEST ) );
-    BOOST_CHECK_EQUAL( position->GetDirection().GetDirection(), expectedDirection );
-    BOOST_CHECK_EQUAL( position->GetCoordinates().GetX(), expectedCoordinates.GetX() );
-    BOOST_CHECK_EQUAL( position->GetCoordinates().GetY(), expectedCoordinates.GetY() );
+    Position pos = Position( Coordinates( 1, 1 ), Direction( Direction::WEST ) );
+    BOOST_CHECK_EQUAL( pos.GetDirection().GetDirection(), expectedDirection );
+    BOOST_CHECK_EQUAL( pos.GetCoordinates().GetX(), expectedCoordinates.GetX() );
+    BOOST_CHECK_EQUAL( pos.GetCoordinates().GetY(), expectedCoordinates.GetY() );
 }
 
 BOOST_AUTO_TEST_CASE( position_set_coordinates )

@@ -91,19 +91,20 @@ A legacy check-in is provided at `$\Iress\UserProjects\stanley.klemme\Training\m
 The project compiles with C++11 as `toy_robot` in your build directory. The unit test project compiles as `test/test_toy_robot`.
 
 It is recommended to build the project with `CMake` and out of source, however in-source builds are supported.
-Alternatively the project supports building with `Conan`.
+Alternatively the project toy_robot supports to be built with `Conan`.
 For legacy reasons it is aspired to support a IressSource build for Windows, but as this is a legacy system the support (is as mentioned aspirational and) might be out of date.
 
 ### Dependencies
 
-The project includes headers for the boost libraries `algorithm` and `lexical_cast` and the unit test project links against the `boost unit test framework`. Tested versions are `1.50.0` with `gcc 4.6.3`, and `1.61.0` with `v140`.
+The project includes headers for the boost libraries and the unit test project links statically against the `boost unit test framework`. Tested versions are `1.50.0` with `gcc 4.6.3`, and `1.61.0` with `v140`.
 
 Get boost at `https://www.boost.org/users/download/`
 
+For convenience boost includes and Windows static libraries for the unittest framework are provided (Linux to come) in the directory `3rd` on the branch `win_static_boost_libs`.
 
 ### CMake (2.8.4 and newer)
 
-Run cmake-gui and configure from the source root of the project. Point the required setting `THIRD_PARTY_ROOT` to the directory that contains your boost install. To build the unit tests project set the option `BUILD_UNIT_TESTS`.
+Run cmake-gui and configure from the source root of the project. Point the required setting `THIRD_PARTY_ROOT` to the directory that contains your boost install, if you are not using the shipped one. To build the unit tests project set the option `BUILD_UNIT_TESTS`.
 
 #### Commandline
 
